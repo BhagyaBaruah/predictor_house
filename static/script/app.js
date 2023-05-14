@@ -28,7 +28,7 @@ function onClickEstimatePrice() {
   var url = "/predict_home_price";
 
   $.post(
-    url,
+   "{{ url_for('predict_home_price') }}",
     {
       total_sqft: parseFloat(sqft.value),
       bhk: bhk,
@@ -48,7 +48,7 @@ function onPageLoad() {
   console.log("document loaded");
     var url = "/get_location_names";
 //  var url = "http://127.0.0.1:5000/get_location_names";
-   $.get(url, function (data, status) {
+  $.get("{{ url_for('get_location_names') }}", function (data, status) {
     console.log("got response for get_location_names request");
     if (data) {
       var locations = data.locations;
